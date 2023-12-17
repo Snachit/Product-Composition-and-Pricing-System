@@ -1,18 +1,4 @@
 from abc import ABC, abstractmethod
-
-class Composition:
-    def __init__(self, produit, quantite):
-        self.__produit = produit
-        self.__quantite = quantite
-
-    @property
-    def produit(self):
-        return self.__produit
-
-    @property
-    def quantite(self):
-        return self.__quantite
-
 class Produit(ABC):
     def __init__(self, nom, code):
         self.__nom = nom
@@ -29,6 +15,19 @@ class Produit(ABC):
     @abstractmethod
     def getPrixHT(self):
         pass
+class Composition:
+    def __init__(self, produit, quantite):
+        self.__produit = produit
+        self.__quantite = quantite
+
+    @property
+    def produit(self):
+        return self.__produit
+
+    @property
+    def quantite(self):
+        return self.__quantite
+
 
 class ProduitElementaire(Produit):
     def __init__(self, nom, code, prixAchat):
@@ -36,7 +35,7 @@ class ProduitElementaire(Produit):
         self.__prixAchat = prixAchat
 
     def __str__(self):
-        return f"{self.nom} ({self.code}) - Prix d'achat: {self.__prixAchat}"
+        return f"{self.nom} ({self.code}) - Prix d'achat: {self.__prixAchat} Dh"
 
     def getPrixHT(self):
         return self.__prixAchat
